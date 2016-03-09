@@ -1,0 +1,72 @@
+<div class="container form-horizontal col-sm-offset-4">
+    <%= form_for @user, html:{id: :"new_user"} do |f| %>
+	    <div class="form-group field ">
+	        <div class="col-sm-2 control-label"><%= f.label :name %><br /></div>
+	        <div class="col-sm-4"><%= f.text_field :name %></div>
+	    </div>	    
+		
+	    <ul class="nav nav-tabs">
+	        <li id="a" class="active tab " data-toggle="tab" href="sectionA"><a >Contact</a></li>
+	        <li id="b" class="tab" data-toggle="tab" href="sectionB"><a >Address</a></li>
+	    </ul>
+
+	    <div class="tab-content">
+		    <div id="sectionA" class="tab-pane fade in active">
+		        <%= f.fields_for :contact do |a| %>		     
+					<div>
+						<div class="form-group field ">
+							<%= a.label :mobile %><br/>
+							<%= a.text_field :mobile %>
+						</div>
+						<div class="form-group field ">
+							<%= a.label :landline %><br/>
+							<%= a.text_field :landline %>
+						</div>				
+					</div>
+				<%end%>
+		    </div>
+
+		    <div id="sectionB" class="tab-pane fade">	        
+				<%= f.fields_for :address do |a| %>		     
+					<div>
+						<div class="form-group field ">
+							<%= a.label :address1 %><br/>
+							<%= a.text_area :address1 %>
+						</div>
+						<div class="form-group field ">
+							<%= a.label :address2 %><br/>
+							<%= a.text_area :address2 %>
+						</div>
+						<div class="form-group field ">
+							<%= a.label :city %><br/>
+							<%= a.text_field :city %>
+						</div>
+						<div class="form-group field ">
+							<%= a.label :state %><br/>
+							<%= a.text_field :state%>
+						</div>
+					</div>
+				<%end%>	    
+		    </div>
+		</div>
+		<button id="submit_btn" remote="true">Submit</button>
+    <% end%>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $("#a").click(function(e){
+	        e.preventDefault();
+	        $(this).tab('show');
+	        $('#sectionB').removeClass('in active');
+	        $('#sectionA').addClass('in active');
+	    });
+	    $("#b").click(function(e){
+	        e.preventDefault();
+	        $(this).tab('show');
+	        $('#sectionA').removeClass('in active');
+	        $('#sectionB').addClass('in active');
+	    });
+	});
+</script>
+ 

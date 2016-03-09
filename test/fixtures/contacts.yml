@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mobile: 1
+  landline: 1
+  user_id: 1
+
+two:
+  mobile: 1
+  landline: 1
+  user_id: 1
